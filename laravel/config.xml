@@ -1,4 +1,4 @@
-<!--<configuration xmlns="http://logging.apache.org/log4php/">     
+<configuration xmlns="http://logging.apache.org/log4php/">     
 	<appender name="myFileAppender" class="LoggerAppenderDailyFile">
         <layout class="LoggerLayoutPattern">
             <param name="conversionPattern" value="%date %x [%level] %message%newline%newline" />
@@ -21,7 +21,8 @@
         <level value="TRACE" />
         <appender_ref ref="myFileAppender" />
     </root>
-</configuration>-->
+</configuration>
+<!--
 <configuration xmlns="http://logging.apache.org/log4php/">
     <appender name="default" class="LoggerAppenderMailEvent">
         <layout class="LoggerLayoutSimple" />
@@ -31,4 +32,4 @@
     <root>
         <appender_ref ref="default" />
     </root>
-</configuration>
+</configuration>-->

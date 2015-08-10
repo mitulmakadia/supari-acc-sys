@@ -15,15 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
 //
 //Route::resource('dogs','dogsController');
 //
-//Route::get('login', function() {
-//  return View::make('login');
-//});
+$router->resource('login','LoginController');
+$router->resource('home','HomeController');
+
 ////POST route
 //Route::post('login', 'AccountController@login');
 //
@@ -39,4 +36,5 @@ Route::get('songs/{slug}/edit','SongsController@edit');
 Route::patch('songs/{slug}','songsController@update');*/
 
 $router->resource('songs','SongsController');
+
 
