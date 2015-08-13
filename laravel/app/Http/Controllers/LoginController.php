@@ -17,6 +17,7 @@ use App\Login;
 use App\Http\Models\dbConfig;
 use Logger;
 use Mail;
+use DB;
 //use Log4php;
 Logger::configure('../config.xml');
 
@@ -84,6 +85,13 @@ class LoginController extends Controller
 					$ipAddress = $_SERVER['REMOTE_ADDR'];
 					$log->info("Email: ".$email." Password: ".$password." IPAddress: ".$ipAddress." isSuccess: true");
 
+					DB::table('logindetails')->insert(
+                    array('DateTime'  =>   \DB::raw('NOW()'), 
+                          'Email'     =>   $email,
+						  'Password'  => $password,
+						  'IPAddress' => $ipAddress,
+						  'IsSuccess' => 1)
+                     );
 					return Redirect('home');
 				}
 				else
@@ -93,6 +101,13 @@ class LoginController extends Controller
 					$ipAddress = $_SERVER['REMOTE_ADDR'];
 					$log->info("Email: ".$email." Password: ".$password." IPAddress: ".$ipAddress." isSuccess: false");
 					
+					DB::table('logindetails')->insert(
+                    array('DateTime'  =>   \DB::raw('NOW()'), 
+                          'Email'     =>   $email,
+						  'Password'  => $password,
+						  'IPAddress' => $ipAddress,
+						  'IsSuccess' => 0)
+                     );
 					\Session::flash('flash_message','Please enter valid credentials.');
 					return redirect('login');
 				}

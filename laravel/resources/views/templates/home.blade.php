@@ -18,8 +18,15 @@
 			<li class=""><a href="#">Master</a></li>
 			<li class=""><a href="#">Voucher Entry</a></li>
 			<li><a class="" href="#">Display</a></li>
-			<li><a class="" href="#">Admin</a></li>
+			<li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ URL::to('manageusers') }}" >Manage Users <span class="glyphicon glyphicon-tasks"></span></a></li>
+                <li><a href="{{ URL::to('loginhistory') }}">Login History <span class="glyphicon glyphicon-list-alt"></a></li>
+             </ul>
+           </li>
 		</ul>
+		
 		
 		<ul class="nav navbar-nav navbar-right">
 			<div class="dropdown">

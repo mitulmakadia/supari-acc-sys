@@ -15,26 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//
-//Route::resource('dogs','dogsController');
-//
+Route::get('loginhistory',function() {
+return view('templates.loginhistory');
+});
+
+$router->resource('manageusers','ManageUsersController');
 $router->resource('login','LoginController');
 $router->resource('home','HomeController');
-
-////POST route
-//Route::post('login', 'AccountController@login');
-//
-//Route::get('login','AccountController@index');
-//
-//
-/*Route::bind('songs',function($slug){
-	return App\Song::whereSlug($slug)->first();
-});
-Route::get('songs','SongsController@index');
-Route::get('songs/{slug}','SongsController@show');
-Route::get('songs/{slug}/edit','SongsController@edit');
-Route::patch('songs/{slug}','songsController@update');*/
-
-$router->resource('songs','SongsController');
-
-
