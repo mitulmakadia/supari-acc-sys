@@ -33,10 +33,20 @@ class LoginController extends Controller
 	
     public function index()
 	{
-		$loginData = array("email" => $_COOKIE['email'],
-							"password" => $_COOKIE['password'],
+		if(isset($_COOKIE['email']) && isset($_COOKIE['password']))
+		{
+			$email = $_COOKIE['email'];
+			$password = $_COOKIE['password'];
+		}
+		else
+		{
+			$email = "";
+			$password = "";
+		}
+		$loginData = array("email" => $email,
+							"password" => $password,
 							"error" => "");
-		return view('templates.Login',['loginData' => $loginData]);
+		return view('templates.login',['loginData' => $loginData]);
 	}
 	
 	public function show()
@@ -74,7 +84,7 @@ class LoginController extends Controller
 					setcookie('password',$password, time() + (86400 * 30), "/");	
 				}
 				
-				$logins = $this->login->where('email', $email)->first();
+				$logins = $this->login->where('Email', $email)->where('Password', md5($password))->first();
 
 				if(isset($logins))
 				{
@@ -114,9 +124,7 @@ class LoginController extends Controller
 			}
 			catch(\Exception $e)
 			{
-				return Redirect::to('login')
-						->withErrors('not allowed') 
-						->withInput(Input::except('password'));
+				echo $e->getMessage();
 			}
 		}
 		

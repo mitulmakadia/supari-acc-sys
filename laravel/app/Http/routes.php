@@ -15,10 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('loginhistory',function() {
-return view('templates.loginhistory');
+Route::get('ledger',function() {
+return view('templates.ledger');
 });
+
+/*Route::get('loginhistory',function() {
+return view('templates.loginhistory');
+});*/
+
 
 $router->resource('manageusers','ManageUsersController');
 $router->resource('login','LoginController');
 $router->resource('home','HomeController');
+$router->resource('loginhistory','LoginHistoryController');

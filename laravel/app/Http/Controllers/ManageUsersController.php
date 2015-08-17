@@ -32,7 +32,8 @@ class ManageUsersController extends Controller
 		{
 			return Redirect::to('login');
 		}
-		return view('templates.manageusers');
+		$users = DB::table('userdetail')->leftJoin('logindetails', 'userdetail.Email', '=', 'logindetails.Email')->groupBy('userdetail.Email')->select(DB::raw('FirstName, LastName, userdetail.Email, max(logindetails.DateTime) as LastLogin' ))->where('DateTime', '!=', 'null' )->get();
+		return view('templates.manageusers',['users' => $users]);
 	}
 	
 	public function show()
@@ -64,8 +65,10 @@ class ManageUsersController extends Controller
 			$data = array("email" => $email,
 							"password" => $password);
 			Mail::send('email.createUser',$data,function($message){
-				$message->from('noreply@gmail.com','SAS');
-				$message->to('ankur.vyas@marutitech.com', 'sas')->subject('New user account created in SAS');
+				$email = \Request::get('Email');
+				$message->from('suparisystem@example.com', 'SAS');
+				$message->to($email, 'sas')->subject('New user account created in SAS');
+				$message->replyTo('noreply@gmail.com', 'noreply');
 			});
 			
 			DB::table('userdetail')->insert(

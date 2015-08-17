@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="animate.css">
 		<link rel="stylesheet" href="../resources/views/static/css/home.css">
 	<script src="../resources/views/static/js/script.js"></script>
+	<script src="../resources/views/static/js/jquery.tablesorter.min.js"></script>
+	<script src="../resources/views/static/js/paging.js"></script>
     <script>
        $(document).ready(
 			/* This is the function that will get executed after the DOM is fully loaded */
@@ -29,12 +31,62 @@
 			}
 		);
 	</script>
+	<!--sorting table values-->
+	<script type="text/javascript">
+$(function(){
+  $('#keyword').tablesorter(); 
+});
+</script>
+<script language="javascript" type="text/javascript">
+
+            $(document).ready(function() {
+                        $('#search').keyup(function() {
+                                    keyword($(this).val());
+                        });
+            });
+            function keyword(inputVal) {
+                        var table = $('#keyword');
+                        table.find('tr').each(function(index, row) {
+                                    var allCells = $(row).find('td');
+                                    if (allCells.length > 0) {
+                                                var found = false;
+                                                allCells.each(function(index, td) {
+                                                            var regExp = new RegExp(inputVal, 'i');
+                                                            if (regExp.test($(td).text())) {
+                                                                        found = true;
+                                                                        return false;
+                                                            }
+                                                });
+                                                if (found == true)
+                                                            $(row).show();
+                                                else
+                                                            $(row).hide();
+                                    }
+                        });
+            }
+
+</script>
+<script><!--This script is for entering comma between numbers-->
+$('input.number').keyup(function(event) {
+
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40) return;
+
+  // format number
+  $(this).val(function(index, value) {
+    return value
+    .replace(/\D/g, "")
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    ;
+  });
+});
+</script>
 	</head>
 	<body>
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header"> 
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" role="button" aria-haspopup="true" aria-expanded="false">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>                        
@@ -44,24 +96,34 @@
 			</div>
 					<div class="collapse navbar-collapse" id="myNavbar">
 						<ul class="nav navbar-nav">
-							<li class=""><a href="#">Master</a></li>
+							<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Master<span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="{{ URL::to('ledger') }}">Ledgers  <span class="glyphicon glyphicon-pencil"></span></a></li>
+											<li class="divider"></li>
+											<li><a href="{{ URL::to('loginhistory') }}">Accounts  <span class="glyphicon glyphicon-road"></span></a></li>
+										</ul>
+								</li>
 							<li class=""><a href="#">Voucher Entry</a></li>
 							<li><a class="" href="#">Display</a></li>
 								<li class="dropdown">
-									<a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin<span class="caret"></span></a>
+									<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
 										<ul class="dropdown-menu">
 											<li><a href="{{ URL::to('manageusers') }}">Manage Users <span class="glyphicon glyphicon-tasks"></span></a></li>
+											<li class="divider"></li>
 											<li><a href="{{ URL::to('loginhistory') }}">Login History <span class="glyphicon glyphicon-list-alt"></a></li>
 										</ul>
 								</li>
 						</ul>
 							<ul class="nav navbar-nav navbar-right">
 								<div class="dropdown">
-									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
+									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>
 										Profile<span class="caret"></span></button>
 										<ul class="dropdown-menu">
 											<li><a href="#">User Stats <span class="glyphicon glyphicon-stats"></span></a></li>
+											<li class="divider">
 											<li><a href="#">Account Setting <span class="glyphicon glyphicon-cog"></span></a></li>
+											<li class="divider"></li>
 											<li><a href="{{ URL::route('home.show') }}">Logout   <span class="glyphicon glyphicon-lock"></li></a></li>
 										</ul>
 								</div>

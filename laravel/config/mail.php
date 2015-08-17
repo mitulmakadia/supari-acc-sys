@@ -54,7 +54,8 @@ return [
     |
     */
 
-    'from' => ['address' => 'avyas534.av@gmail.com', 'name' => 'Ankur Vyas'],
+    'from' => ['address' => 'suparisystem@gmail.com', 'name' => 'Supari-Account-System'],
+	'reply-to' => ['address' => 'noreply@gmail.com', 'name' => 'no-reply'],
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +81,7 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME','avyas534.av@gmail.com'),
+    'username' => env('MAIL_USERNAME','suparisystem@gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +94,7 @@ return [
     |
     */
 
-    'password' => env('MAIL_PASSWORD','9033062038'),
+    'password' => env('MAIL_PASSWORD','supari123456'),
 
     /*
     |--------------------------------------------------------------------------

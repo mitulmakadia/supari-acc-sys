@@ -25,18 +25,36 @@
 				</div>
 		</div>
     <hr>
-    <table class="table table-bordered">
+    <table id="results" class="table table-bordered">
     <thead>
       <tr>
         <th>Name</th>
         <th>IP Address</th>
-        <th>Date Time IST</th>
+        <th>Date</th>
 		<th>Result</th>
       </tr>
+	  @foreach ($users as $user)
+		<tr>
+	
+			<td>{{ $user->Name }}</td>
+			<td>{{ $user->IPAddress }}</td>
+			<td>{{ $user->LastLogin }}</td>
+			<td>{{ $user->Result }}</td>
+		</tr>			
+	  @endforeach
     </thead>
     <tbody>
      </tbody>
   </table>
+  
+  <div id="pageNavPosition"></div>
   </div>
+  
+  <script type="text/javascript">
+       var pager = new Pager('results', 10); 
+       pager.init(); 
+       pager.showPageNav('pager', 'pageNavPosition'); 
+       pager.showPage(1);
+   </script>
  
 @stop

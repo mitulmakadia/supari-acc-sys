@@ -45,6 +45,16 @@
 				<th>Email</th>
 				<th>Last Login</th>
 			</tr>
+		
+				@foreach ($users as $user)
+					<tr>
+						<td>{{ $user->FirstName }}</td>
+						<td>{{ $user->LastName }}</td>
+						<td>{{ $user->Email }}</td>
+						<td>{{ $user->LastLogin }}</td>
+					</tr>			
+				@endforeach
+			
 		</thead>
 		<tbody>
 		</tbody>
