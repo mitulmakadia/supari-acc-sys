@@ -8,7 +8,7 @@
 						<form class="form-inline" role="form">
 							<div class="form-group">
 								<label>Search :</label>
-								<input type="Search" class="form-control" id="search" placeholder="Enter Name" onkeypress="return tabE(this,Event)">
+								<input type="Search" class="form-control search" placeholder="Enter Name" onkeypress="return tabE(this,Event)">
 							</div>
 									<div class="form-group">
 										<label>Date :</label>
@@ -25,7 +25,7 @@
 				</div>
 		</div>
     <hr>
-    <table id="results" class="table table-bordered">
+    <table id="results" class="table table-bordered keyword">
     <thead>
       <tr>
         <th>Name</th>
@@ -33,17 +33,24 @@
         <th>Date</th>
 		<th>Result</th>
       </tr>
+	  </thead>
+	   <tbody>
 	  @foreach ($users as $user)
 		<tr>
 	
 			<td>{{ $user->Name }}</td>
 			<td>{{ $user->IPAddress }}</td>
 			<td>{{ $user->LastLogin }}</td>
-			<td>{{ $user->Result }}</td>
+			@if (($user->Result) === 1)
+				<td>Success</td>
+			@else
+				<td>Fail</td>
+			@endif
+			
 		</tr>			
 	  @endforeach
-    </thead>
-    <tbody>
+    
+   
      </tbody>
   </table>
   

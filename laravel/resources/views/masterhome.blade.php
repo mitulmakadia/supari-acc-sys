@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+
  <html lang="en">
  <head>
    <title>Bootstrap Example</title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="csrf-token" content="{{ csrf_token() }}" />
    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
    <!-- <link rel="stylesheet" type="text/css" href="loginpage.css">-->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -15,11 +16,14 @@
    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
    <!-- Load jQuery UI Main JS  -->
    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <link rel="stylesheet" href="animate.css">
+ 
 		<link rel="stylesheet" href="../resources/views/static/css/home.css">
 	<script src="../resources/views/static/js/script.js"></script>
 	<script src="../resources/views/static/js/jquery.tablesorter.min.js"></script>
-	<script src="../resources/views/static/js/paging.js"></script>
+   <script src="../resources/views/static/js/jquery.blockUI.js"></script>
+  <!-- <script src="../resources/views/static/js/createuser.js"></script>-->
+     <script src="../resources/views/static/js/paging.js"></script>
+	 <script src="../resources/views/static/js/datapicker.js"></script>
     <script>
        $(document).ready(
 			/* This is the function that will get executed after the DOM is fully loaded */
@@ -34,18 +38,18 @@
 	<!--sorting table values-->
 	<script type="text/javascript">
 $(function(){
-  $('#keyword').tablesorter(); 
+  $('.keyword').tablesorter(); 
 });
 </script>
 <script language="javascript" type="text/javascript">
 
             $(document).ready(function() {
-                        $('#search').keyup(function() {
+                        $('.search').keyup(function() {
                                     keyword($(this).val());
                         });
             });
             function keyword(inputVal) {
-                        var table = $('#keyword');
+                        var table = $('.keyword');
                         table.find('tr').each(function(index, row) {
                                     var allCells = $(row).find('td');
                                     if (allCells.length > 0) {
@@ -81,6 +85,8 @@ $('input.number').keyup(function(event) {
   });
 });
 </script>
+
+
 	</head>
 	<body>
 	<nav class="navbar navbar-inverse">

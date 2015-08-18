@@ -23,7 +23,7 @@ return view('templates.ledger');
 return view('templates.loginhistory');
 });*/
 
-
+Route::post('adduser', 'AjaxAddUserController@index');
 $router->resource('manageusers','ManageUsersController');
 $router->resource('login','LoginController');
 $router->resource('home','HomeController');

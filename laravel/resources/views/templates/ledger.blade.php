@@ -11,7 +11,7 @@
 			<div class="panel-heading">Ledger</div>
 				<div class="panel-body">
 					<div class="first" id="right">
-							Search<input type="text" id="search" name="search" value="">
+							Search<input type="text" class="search" name="search" value="">
 							<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Create Ledger</button>
 					</div>
 						<div class="modal fade" id="myModal" role="dialog">
@@ -51,7 +51,7 @@
 				</div>
 		</div>
     <hr>
-    <table class="table table-bordered table-striped table-hover" id="keyword" cellspacing="0" cellpadding="0">
+    <table class="table table-bordered table-striped table-hover keyword" cellspacing="0" cellpadding="0">
 		<thead>
 			<tr>
 				<th><span>Name</span></th>

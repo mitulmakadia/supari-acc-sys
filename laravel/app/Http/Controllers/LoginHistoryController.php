@@ -33,7 +33,7 @@ class LoginHistoryController extends Controller
 		{
 			return Redirect::to('login');
 		}
-		$users = DB::table('userdetail')->Join('logindetails', 'userdetail.Email', '=', 'logindetails.Email')->select(DB::raw('CONCAT(FirstName, " ", LastName) AS Name, logindetails.IPAddress, logindetails.DateTime as LastLogin, logindetails.IsSuccess as Result' ))->orderBy('logindetails.DateTime', 'DESC')->get();
+		$users = DB::table('userdetail')->rightJoin('logindetails', 'userdetail.Email', '=', 'logindetails.Email')->select(DB::raw('CONCAT(FirstName, " ", LastName) AS Name, logindetails.IPAddress, logindetails.DateTime as LastLogin, logindetails.IsSuccess as Result' ))->orderBy('logindetails.DateTime', 'DESC')->get();
 		
 		//$users = Login::paginate(15);
 		return view('templates.loginhistory',['users' => $users]);
