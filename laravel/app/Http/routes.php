@@ -15,14 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('ledger',function() {
+/*Route::get('ledger',function() {
 return view('templates.ledger');
+});*/
+
+Route::get('payment',function() {
+return view('templates.payment');
 });
+
 
 /*Route::get('loginhistory',function() {
 return view('templates.loginhistory');
 });*/
-
+//Route::post('ledger','AddLedgerController@index');
+$router->resource('ledger','AddLedgerController');
 Route::post('adduser', 'AjaxAddUserController@index');
 $router->resource('manageusers','ManageUsersController');
 $router->resource('login','LoginController');

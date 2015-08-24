@@ -4,28 +4,15 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Login History</div>
 				<div class="panel-body">
-					<div class="first">
-						<form class="form-inline" role="form">
-							<div class="form-group">
-								<label>Search :</label>
-								<input type="Search" class="form-control search" placeholder="Enter Name" onkeypress="return tabE(this,Event)">
-							</div>
-									<div class="form-group">
-										<label>Date :</label>
-										<input type="text" class="form-control datepicker"onkeypress="return tabE(this,Event)">
-									</div>
-											<div class="form-group">
-												<label>To Date :</label>
-												<input type="text" class="form-control datepicker" onkeypress="return tabE(this,Event)">      
-												<button type="submit" class="btn btn-success"> GO </button>
-						</form>
-											</div>
-					</div>
-	<!-- Modal -->
+				<label for="history">View Login History here!</label>	
 				</div>
-		</div>
+      </div>
+	<!-- Modal -->
+			
+		
     <hr>
-    <table id="results" class="table table-bordered keyword">
+	<div class="table-responsive">
+    <table id="myTable" class="table table-bordered table-striped keyword">
     <thead>
       <tr>
         <th>Name</th>
@@ -53,15 +40,23 @@
    
      </tbody>
   </table>
+  </div>
   
   <div id="pageNavPosition"></div>
   </div>
-  
-  <script type="text/javascript">
-       var pager = new Pager('results', 10); 
-       pager.init(); 
-       pager.showPageNav('pager', 'pageNavPosition'); 
-       pager.showPage(1);
-   </script>
  
+ <script>
+$(document).ready(function(){
+    $('#myTable').dataTable();
+});
+</script>
+
+  
+ <style>
+ body{
+background-color: aliceblue;
+ }
+hr {
+border-top: 3px solid #2C3E50;}
+ </style>
 @stop

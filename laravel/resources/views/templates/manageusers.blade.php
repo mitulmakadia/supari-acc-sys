@@ -1,20 +1,16 @@
 @extends('masterhome')
 @section('content')
-  
-    <div class="container">
-		@if(Session::has('flash_message'))
-							<div class="alert alert-success">
-								{{ Session::get('flash_message')}}
-							</div>
-		@endif
-		<div class="panel panel-default">
+
+<div class="container">
+<div class="panel panel-default">
 			<div class="panel-heading">Manage Users</div>
 				<div class="panel-body">
-					<div class="first" id="right">
-							Search<input type="text" name="search" class="search" value="">
-							<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Create User</button>
-					</div>
-						<div class="modal fade" id="myModal" role="dialog">
+				
+				<label for="create">Add a New User!</label>	
+				<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Create User</button>
+			
+				</div>
+			<div class="modal fade" id="myModal" role="dialog">
 							<div class="modal-dialog modal-md">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -31,7 +27,7 @@
 												<p>Upload Profile Picture</p><input type="file" name="datafile" onkeypress="return tabE(this,Event)">
 								        </div>
 												<div class="modal-footer">
-													<button type="button" id="submit" class="btn btn-danger btn-block">Create</button>
+													<button type="button" id="submit" class="btn btn-danger btn-block" data-dismiss="modal" aria-label="Close">Create</button>
 												</div>
 											</form>
 											<!--{!!Form::close()!!}	-->
@@ -39,10 +35,12 @@
 								</div>
 							</div>
 						</div>
+					
 				</div>
-		</div>
+		
     <hr>
-    <table class="table table-bordered table-striped table-hover keyword" cellspacing="0" cellpadding="0">
+	<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover keyword" id="myTable" cellspacing="0" cellpadding="0">
 		<thead>
 			<tr>
 				<th>Firstname</th>
@@ -65,40 +63,12 @@
 		
 		</tbody>
 	</table>
+	</div>
 </div>
-<script>
-/*
- $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          } 
-     });
-$(document).ready(function(){
-$("#submit").on("click",function(){
-var FirstName = $("#FirstName").val();
-var LastName = $("#LastName").val();
-var Email = $("#Email").val();
-
-// Returns successful data submission message when the entered information is stored in database.
-       var dataString = 'FirstName='+ FirstName + '&LastName='+ LastName + '&Email='+ Email;
-       if(FirstName==''||LastName==''||Email=='')
-        {
-            alert("Please Fill All Fields");
-        }
-        else
-        {
-			// AJAX Code To Submit Form.
-		$.ajax({
-		type: "GET",
-		url: "adduser",
-		data: datastring,
-		success: function(){
 		
-		}
-	});		
-		}	});
-	});
-*/
+
+
+<script>
 $(document).ready(function(){
   $('#submit').click(function(){    
    
@@ -114,10 +84,25 @@ $(document).ready(function(){
                data: {'Email':$('input[name=Email]').val(),'FirstName':$('input[name=FirstName]').val(),'LastName':$('input[name=LastName]').val(), '_token': $('input[name=_token]').val()},
 		 });
  
-      
+      alert("Confiramtion Mail Sent");
+	  
     }     
 
   }); 
 });
 </script>
+ <script>
+$(document).ready(function(){
+    $('#myTable').dataTable();
+});
+</script>
+<style>
+body {
+    background-color: beige;
+}
+hr {
+border-top: 3px solid #2C3E50;}
+</style>
+						
+
 @stop

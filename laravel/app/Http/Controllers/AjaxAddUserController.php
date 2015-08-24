@@ -37,6 +37,8 @@ class AjaxAddUserController extends Controller
 		$LastName= $data['LastName'];
 		$Email= $data['Email'];
 		$password = Password::generatePassword(9);
+	
+			
 		DB::table('userdetail')->insert(
                     array(
 							'Email'     =>   $Email, 
