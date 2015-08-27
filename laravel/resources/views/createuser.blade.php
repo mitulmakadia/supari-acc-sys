@@ -9,5 +9,5 @@ $Email=$_POST['Email'];
 //Insert query
 $query = mysql_query("insert into userdetail(FirstName, LastName, Email) values ('$FirstName', '$LastName', '$Email')");
 echo "Form Submitted S
-mysql_close($connection); // Connection Closed
+mysql_close($connection);
 ?>
