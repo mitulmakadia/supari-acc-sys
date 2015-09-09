@@ -1,4 +1,0 @@
-2015-08-20T03:47:43+00:00  [INFO] Email: harsh.makadia@marutitech.com Password: jnCAoW213 IPAddress: 127.0.0.1 isSuccess: true
-
-2015-08-20T04:56:35+00:00  [INFO] Email: harsh.makadia@marutitech.com Password: 62LUqZ2vi IPAddress: 127.0.0.1 isSuccess: true
-
